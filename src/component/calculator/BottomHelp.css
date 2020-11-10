@@ -1,0 +1,24 @@
+.component-bottom-help {
+    background-color: #5A5857;
+    font-size: 1rem;
+    float: left;
+    width: auto;
+    cursor: pointer;
+}
+
+.component-bottom-help button {
+    background-color: #5A5857;
+    color: #FD9E2B;
+    font-size: 32px;
+    padding: 0 20px;
+}
+
+.component-bottom-help button:focus {
+    outline: 0;
+}
+
+@media (max-width: 600px) {
+    .component-bottom-help button {
+        padding: 0 10px;
+    }
+}

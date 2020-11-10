@@ -1,0 +1,22 @@
+.component-config-modal {
+    top: auto;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 400px;
+}
+
+@media (max-width: 600px) {
+    .component-config-modal {
+        bottom: 20px;
+        right: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+/*
+@media (min-width: 600px) and (max-width: 900px) {
+    .component-config-modal {
+        width: 70%;
+    }
+}*/

@@ -1,0 +1,17 @@
+.component-app {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.component-app button {
+    border: 1px solid transparent;
+    margin: 0 1px 0 0;
+    flex: 1 0 auto;
+    cursor: pointer;
+}
+
+.component-app button:focus {
+    outline: 0;
+}

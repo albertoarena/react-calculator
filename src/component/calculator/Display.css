@@ -1,0 +1,81 @@
+.component-display {
+    background-color: #5A5857;
+    color: #ffffff;
+    text-align: right;
+    font-weight: 200;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.component-display .component-display-result {
+    font-size: 125px;
+    /*padding: 0.2rem 0.7rem 0.1rem 0.5rem;*/
+    padding: 10px 35px 5px 25px;
+}
+
+.component-display .component-display-history {
+    position: absolute;
+    opacity: 0.5;
+    background-color: transparent;
+    color: #fff;
+    top: 2px;
+    left: 4px;
+    width: calc(100% - 4px);
+    text-align: left;
+    font-size: 24px;
+}
+
+.component-display .component-display-unit {
+    position: absolute;
+    opacity: 0.5;
+    background-color: transparent;
+    color: #fff;
+    top: 136px;
+    left: 4px;
+    width: 200px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.component-display .component-display-exception {
+    display: none;
+    color: #ffffff;
+    font-size: 40px;
+    padding: 6px 35px 6px 25px;
+}
+
+.component-display.exception .component-display-result {
+    color: orangered;
+    font-size: 75px;
+}
+
+.component-display.exception .component-display-exception {
+    display: block;
+}
+
+@media (max-width: 400px) {
+    .component-display div.component-display-result {
+        font-size: 50px;
+        padding-top: 10px;
+    }
+    .component-display .component-display-history {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 600px) {
+    .component-display div.component-display-result {
+        font-size: 70px;
+        padding-top: 18px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .component-display div.component-display-result {
+        font-size: 100px;
+    }
+    .component-display .component-display-history {
+        font-size: 20px;
+    }
+}

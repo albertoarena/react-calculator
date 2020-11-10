@@ -1,0 +1,91 @@
+.component-button {
+    display: inline-flex;
+    width: 25%;
+    flex: 1 0 auto;
+}
+
+.component-button.wide {
+    width: 50%;
+}
+
+.component-button button {
+    background-color: #80807F;
+    color: white;
+    /*border: 1px solid transparent;*/
+    font-size: 70px;
+    /*margin: 0 1px 0 0;*/
+    /*flex: 1 0 auto;*/
+    padding: 0;
+    /*cursor: pointer;*/
+}
+
+.component-button button:focus {
+    border: 1px solid #ccc;
+    outline: 0;
+}
+
+.component-button.extended {
+    display: none;
+}
+
+.component-button:last-child button {
+    margin-right: 0;
+}
+
+.component-button.orange button {
+    background-color: #FD9E2B;
+    color: white;
+}
+
+.component-button.grey button {
+    background-color: #686566;
+    color: white;
+}
+
+.component-button.disabled button {
+    color: #7f7f7f;
+    cursor: default;
+}
+
+.component-button-panel.extended .component-button.extended {
+    display: inline-flex;
+}
+
+.component-button-panel.extended .component-button {
+    width: 17.5%;
+}
+
+.component-button-panel.extended .component-button.small {
+    width: 10%;
+}
+
+.component-button-panel.extended .component-button.wide {
+    width: 35%;
+}
+
+.component-button-panel.extended .component-button.extended.wide {
+    width: 20%;
+}
+
+.component-button-panel.extended .component-button.small button {
+    font-size: 30px;
+}
+
+@media (max-width: 600px) {
+    .component-button button {
+        font-size: 40px;
+    }
+    .component-button-panel.extended .component-button.small button {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .component-button button {
+        font-size: 60px;
+    }
+    .component-button-panel.extended .component-button.small button {
+        font-size: 20px;
+    }
+}
+

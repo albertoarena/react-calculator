@@ -1,0 +1,125 @@
+.component-modal-root {
+    display: none;
+}
+
+.component-modal-root.visible {
+    display: block;
+}
+
+.component-modal-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .45);
+    filter: alpha(opacity=50);
+}
+
+.component-modal-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    outline: 0;
+    z-index: 1001;
+}
+
+.component-modal {
+    position: relative;
+    /*bottom: 20px;*/
+    /*right: 50px;*/
+    top: 100px;
+    margin: 0 auto;
+    background-color: #EEEEEE;
+    color: #5A5857;
+    padding: 0;
+    width: 40%;
+    height: auto;
+    font-size: 20px;
+    /*box-shadow: 0 0 30px 1px #333;*/
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+    opacity: 0.9;
+    border-radius: 2px;
+}
+
+.component-modal .component-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0;
+    color: rgba(0,0,0,.45);
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}
+
+.component-modal .component-modal-close span {
+    display: block;
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 56px;
+    text-align: center;
+    text-transform: none;
+    text-rendering: auto;
+}
+
+.component-modal div.component-modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #d0d0d0;
+    border-radius: 2px 2px 0 0;
+    font-size: 20px;
+}
+
+.component-modal div.component-modal-body {
+    padding: 24px;
+    line-height: 1.5715;
+    font-size: 20px;
+}
+
+.component-modal div.component-modal-footer {
+    padding: 16px 16px;
+    text-align: right;
+    background: 0 0;
+    border-top: 1px solid #d0d0d0;
+    border-radius: 0 0 2px 2px;
+    font-size: 20px;
+    display: flow-root;
+}
+
+.component-modal div.component-modal-footer.hidden {
+    display: none;
+}
+
+.component-modal div.component-modal-footer button {
+    float: right;
+    border: none;
+    font-size: 20px;
+    margin: 0 1px 0 20px;
+    flex: 1 0 auto;
+    padding: 2px 10px;
+    cursor: pointer;
+    color: #fff;
+    background: #FD9E2B;
+    border-color: #FD9E2B;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,.045);
+    box-shadow: 0 2px 0 rgba(0,0,0,.045);
+}
+
+.component-modal p {
+    margin: 0;
+}

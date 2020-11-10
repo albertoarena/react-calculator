@@ -1,0 +1,42 @@
+.component-mode {
+    background-color: #5A5857;
+    color: white;
+    text-align: right;
+    font-weight: 200;
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.component-mode > div {
+    /*font-size: 1rem;*/
+    /*padding: 0.2rem 0.7rem 0.1rem 0.5rem;*/
+}
+
+.component-mode button {
+    background-color: #5A5857;
+    color: white;
+    border: 1px solid transparent;
+    font-size: 32px;
+    line-height: 32px;
+    margin-top: 8px !important;
+    flex: 1 0 auto;
+    padding: 0 20px 0 0;
+    cursor: pointer;
+}
+
+.component-mode button:focus {
+    outline: 0;
+}
+
+.component-mode button.selected {
+    color: #FD9E2B;
+}
+
+@media (max-width: 600px) {
+    .component-mode button {
+        padding: 0 10px 0 0;
+        font-size: 24px;
+        line-height: 24px;
+    }
+}
+

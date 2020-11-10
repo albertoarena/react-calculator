@@ -1,0 +1,12 @@
+.component-bottom-panel {
+    background-color: #5A5857;
+    color: white;
+    text-align: right;
+    font-weight: 200;
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.component-bottom-panel .component-mode {
+    float: right;
+}

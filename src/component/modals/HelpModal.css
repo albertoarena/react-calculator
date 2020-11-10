@@ -1,0 +1,47 @@
+.component-help-modal {
+    top: auto;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 50%;
+}
+
+section.component-help-table {
+    display: table;
+    width: 100%;
+}
+
+section.component-help-table > * {
+    display: table-row;
+}
+
+section.component-help-table header div {
+    font-weight: 600;
+}
+
+section.component-help-table .col {
+    display: table-cell;
+}
+
+section.component-help-table :not(header) .col:first-child {
+    width: 40%;
+    color: #FD9E2B;
+}
+
+section.component-help-table .col:last-child {
+    width: 60%;
+}
+
+@media (max-width: 600px) {
+    .component-help-modal {
+        bottom: 20px;
+        left: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .component-help-modal {
+        width: 70%;
+    }
+}

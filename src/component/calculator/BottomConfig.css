@@ -1,0 +1,18 @@
+.component-bottom-config {
+    background-color: #5A5857;
+    /*font-size: 1rem;*/
+    float: right;
+    width: auto;
+    cursor: pointer;
+}
+
+.component-bottom-config button {
+    background-color: #5A5857;
+    color: #EEE;
+    font-size: 32px;
+    padding: 0 20px;
+}
+
+.component-bottom-config button:focus {
+    outline: 0;
+}
