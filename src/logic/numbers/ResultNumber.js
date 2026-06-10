@@ -1,12 +1,11 @@
 import BaseNumber from "./BaseNumber";
 
 export default class ResultNumber extends BaseNumber {
+  getType() {
+    return "result";
+  }
 
-    getType() {
-        return "result";
-    }
-
-    toString() {
-        return "= " + super.toString();
-    }
+  toString() {
+    return "= " + super.toString();
+  }
 }

@@ -17,43 +17,44 @@ import NaturalLogarithmOperator from "./operators/NaturalLogarithmOperator";
 import PowEulerOperator from "./operators/PowEulerOperator";
 import FactorialOperator from "./operators/FactorialOperator";
 import LogarithmOperator from "./operators/LogarithmOperator";
+import ReciprocalOperator from "./operators/ReciprocalOperator";
 
 const operators = {
-    "add": AddOperator,
-    "subtract": SubtractOperator,
-    "multiply": MultiplyOperator,
-    "divide": DivideOperator,
-    "negative": NegativeOperator,
-    "sqr2": SquareRootOperator,
-    "percentage": PercentageOperator,
-    "pow2": Pow2Operator,
-    "powy": PowYOperator,
-    "pow_euler": PowEulerOperator,
-    "sin": SinOperator,
-    "cos": CosOperator,
-    "tan": TanOperator,
-    "pi": PiOperator,
-    "euler": EulerOperator,
-    "natural_logarithm": NaturalLogarithmOperator,
-    "log": LogarithmOperator,
-    "factorial": FactorialOperator,
+  add: AddOperator,
+  subtract: SubtractOperator,
+  multiply: MultiplyOperator,
+  divide: DivideOperator,
+  negative: NegativeOperator,
+  sqr2: SquareRootOperator,
+  percentage: PercentageOperator,
+  pow2: Pow2Operator,
+  powy: PowYOperator,
+  pow_euler: PowEulerOperator,
+  sin: SinOperator,
+  cos: CosOperator,
+  tan: TanOperator,
+  pi: PiOperator,
+  euler: EulerOperator,
+  natural_logarithm: NaturalLogarithmOperator,
+  log: LogarithmOperator,
+  factorial: FactorialOperator,
+  "1/x": ReciprocalOperator,
 };
 
 export default class OperatorsFactory {
+  /**
+   * Get operator
+   *
+   * @param v
+   * @param unit
+   * @return {BaseOperator}
+   */
+  getOperator(v, unit) {
+    let constructor = operators[v] || BaseOperator;
+    return new constructor(unit);
+  }
 
-    /**
-     * Get operator
-     *
-     * @param v
-     * @param unit
-     * @return {BaseOperator}
-     */
-    getOperator(v, unit) {
-        let constructor = operators[v] || BaseOperator;
-        return new constructor(unit);
-    }
-
-    isOperator(v) {
-        return !!operators[v];
-    }
+  isOperator(v) {
+    return !!operators[v];
+  }
 }

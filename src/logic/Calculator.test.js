@@ -1,119 +1,128 @@
-import chai from "chai";
-import {describe, expect, it} from "@jest/globals";
+import { describe, expect, it } from "vitest";
 import Constants from "./Constants";
 import Calculator from "./Calculator";
 
-const assert = chai.assert;
-
 describe("Calculator", () => {
-
-    describe('instantiates calculator', () => {
-
-        it('instantiates calculator with default settings', () => {
-            const obj = new Calculator();
-            assert.instanceOf(obj, Calculator);
-            assert.equal(obj.unit, Constants.getUnitDefault());
-            assert.equal(obj.debug, false);
-        });
-
-        it('instantiates calculator with custom settings', () => {
-            const obj = new Calculator({
-                unit: Constants.getUnitDegrees(),
-                debug: true,
-            });
-            assert.instanceOf(obj, Calculator);
-            assert.equal(obj.unit, Constants.getUnitDegrees());
-            assert.equal(obj.debug, true);
-        });
-
+  describe("instantiates calculator", () => {
+    it("instantiates calculator with default settings", () => {
+      const obj = new Calculator();
+      expect(obj).toBeInstanceOf(Calculator);
+      expect(obj.unit).toEqual(Constants.getUnitDefault());
+      expect(obj.debug).toEqual(false);
     });
 
-    it('sets unit', () => {
-        const obj = new Calculator();
-        assert.equal(obj.unit, Constants.getUnitDefault());
-        obj.setUnit(Constants.getUnitDegrees());
-        assert.equal(obj.unit, Constants.getUnitDegrees());
+    it("instantiates calculator with custom settings", () => {
+      const obj = new Calculator({
+        unit: Constants.getUnitDegrees(),
+        debug: true,
+      });
+      expect(obj).toBeInstanceOf(Calculator);
+      expect(obj.unit).toEqual(Constants.getUnitDegrees());
+      expect(obj.debug).toEqual(true);
+    });
+  });
+
+  it("sets unit", () => {
+    const obj = new Calculator();
+    expect(obj.unit).toEqual(Constants.getUnitDefault());
+    obj.setUnit(Constants.getUnitDegrees());
+    expect(obj.unit).toEqual(Constants.getUnitDegrees());
+  });
+
+  it("clears calculator", () => {
+    const obj = new Calculator();
+
+    expect(obj.getResult().total).toBeNull();
+
+    assert(
+      obj.operation("1").operation("add").operation("2").result().total,
+      "3",
+    );
+
+    obj.clear();
+
+    expect(obj.getResult().total).toBeNull();
+  });
+
+  describe("getResult", () => {
+    it("gets initial empty result", () => {
+      const obj = new Calculator();
+      const result = obj.getResult();
+      expect(result.processed).toBe(false);
+      expect(result.total).toBeNull();
+      expect(result.next).toEqual("");
+      expect(result.history).toEqual("");
+      expect(result.exception).toEqual("");
     });
 
-    it('clears calculator', () => {
-        const obj = new Calculator();
+    it("gets result after calculation", () => {
+      const obj = new Calculator();
 
-        assert.isNull(obj.getResult().total);
+      const result = obj
+        .operation("1")
+        .operation("add")
+        .operation("2")
+        .result();
 
-        assert(obj.operation("1")
-            .operation("add")
-            .operation("2")
-            .result()
-            .total, "3"
-        );
+      expect(result.processed).toBe(true);
+      expect(result.total).toEqual("3");
+      expect(result.next).toEqual("3");
+      expect(result.history).toEqual("1 + 2 = 3");
+      expect(result.exception).toEqual("");
+    });
+  });
 
-        obj.clear();
+  describe("calculates", () => {
+    it("calculates addition", () => {
+      const obj = new Calculator();
 
-        assert.isNull(obj.getResult().total);
+      const result = obj
+        .operation("1")
+        .operation("add")
+        .operation("2.5")
+        .result();
+
+      expect(result.processed).toBe(true);
+      expect(result.total).toEqual("3.5");
+      expect(result.next).toEqual("3.5");
+      expect(result.history).toEqual("1 + 2.5 = 3.5");
+      expect(result.exception).toEqual("");
     });
 
-    describe('getResult', () => {
+    it("calculates addition with positive and negative values", () => {
+      const obj = new Calculator();
 
-        it('gets initial empty result', () => {
-            const obj = new Calculator();
-            const result = obj.getResult();
-            assert.isFalse(result.processed);
-            assert.isNull(result.total);
-            assert.equal(result.next, "");
-            assert.equal(result.history, "");
-            assert.equal(result.exception, "");
-        });
+      const result = obj
+        .operation("1")
+        .operation("add")
+        .operation("2.5")
+        .operation("negative")
+        .result();
 
-        it('gets result after calculation', () => {
-            const obj = new Calculator();
-
-            const result = obj.operation("1")
-                .operation("add")
-                .operation("2")
-                .result();
-
-            assert.isTrue(result.processed);
-            assert.equal(result.total, "3");
-            assert.equal(result.next, "3");
-            assert.equal(result.history, "1 + 2 = 3");
-            assert.equal(result.exception, "");
-        });
-
+      expect(result.processed).toBe(true);
+      expect(result.total).toEqual("-1.5");
+      expect(result.next).toEqual("-1.5");
+      expect(result.history).toEqual("1 + -2.5 = -1.5");
+      expect(result.exception).toEqual("");
     });
 
-    describe('calculates', () => {
+    it("calculates reciprocal", () => {
+      const obj = new Calculator();
 
-        it('calculates addition', () => {
-            const obj = new Calculator();
+      const result = obj.operation("4").operation("1/x").result();
 
-            const result = obj.operation("1")
-                .operation("add")
-                .operation("2.5")
-                .result();
-
-            assert.isTrue(result.processed);
-            assert.equal(result.total, "3.5");
-            assert.equal(result.next, "3.5");
-            assert.equal(result.history, "1 + 2.5 = 3.5");
-            assert.equal(result.exception, "");
-        });
-
-        it('calculates addition with positive and negative values', () => {
-            const obj = new Calculator();
-
-            const result = obj.operation("1")
-                .operation("add")
-                .operation("2.5")
-                .operation("negative")
-                .result();
-
-            assert.isTrue(result.processed);
-            assert.equal(result.total, "-1.5");
-            assert.equal(result.next, "-1.5");
-            assert.equal(result.history, "1 + -2.5 = -1.5");
-            assert.equal(result.exception, "");
-        });
-
+      expect(result.processed).toBe(true);
+      expect(result.total).toEqual("0.25");
+      expect(result.exception).toEqual("");
     });
 
+    it("reports divide-by-zero on reciprocal of 0", () => {
+      const obj = new Calculator();
+
+      const result = obj.operation("0").operation("1/x").result();
+
+      expect(result.total).toEqual("Error");
+      expect(result.exception).not.toEqual("");
+    });
+  });
 });

@@ -1,50 +1,51 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import CosOperator from "./CosOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("CosOperator", () => {
+  it("gets operator", () => {
+    expect(new CosOperator().getOperator()).toEqual("cos");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new CosOperator().getOperator(), "cos");
+  it("gets precedence", () => {
+    expect(new CosOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceMedium(),
+    );
+  });
+
+  it("gets string order", () => {
+    expect(new CosOperator().getStringOrder()).toEqual(-1);
+  });
+
+  it("gets string brackets", () => {
+    expect(new CosOperator().getStringBrackets()).toBe(true);
+  });
+
+  it("gets apply immediately", () => {
+    expect(new CosOperator().getApplyImmediately()).toBe(true);
+  });
+
+  describe("runs", () => {
+    it("runs with radians unit", () => {
+      const value = Math.cos(1);
+      expect(new CosOperator().run(1)).toEqual(value);
+      expect(new CosOperator().run(0, 1)).toEqual(value);
+      expect(new CosOperator().run(-1)).toEqual(value);
+      expect(new CosOperator().run(0, -1)).toEqual(value);
     });
 
-    it('gets precedence', () => {
-        assert.equal(new CosOperator().getPrecedence(), Constants.getPrecedenceMedium());
+    it("runs with degrees unit", () => {
+      const value = Math.cos(Math.PI / 180);
+      expect(new CosOperator(Constants.getUnitDegrees()).run(1)).toEqual(value);
+      expect(new CosOperator(Constants.getUnitDegrees()).run(0, 1)).toEqual(
+        value,
+      );
+      expect(new CosOperator(Constants.getUnitDegrees()).run(-1)).toEqual(
+        value,
+      );
+      expect(new CosOperator(Constants.getUnitDegrees()).run(0, -1)).toEqual(
+        value,
+      );
     });
-
-    it('gets string order', () => {
-        assert.equal(new CosOperator().getStringOrder(), -1);
-    });
-
-    it('gets string brackets', () => {
-        assert.isTrue(new CosOperator().getStringBrackets());
-    });
-
-    it('gets apply immediately', () => {
-        assert.isTrue(new CosOperator().getApplyImmediately());
-    });
-
-    describe('runs', () => {
-
-        it('runs with radians unit', () => {
-            const value = Math.cos(1);
-            assert.equal(new CosOperator().run(1), value);
-            assert.equal(new CosOperator().run(0, 1), value);
-            assert.equal(new CosOperator().run(-1), value);
-            assert.equal(new CosOperator().run(0, -1), value);
-        });
-
-        it('runs with degrees unit', () => {
-            const value = Math.cos(Math.PI / 180);
-            assert.equal(new CosOperator(Constants.getUnitDegrees()).run(1), value);
-            assert.equal(new CosOperator(Constants.getUnitDegrees()).run(0, 1), value);
-            assert.equal(new CosOperator(Constants.getUnitDegrees()).run(-1), value);
-            assert.equal(new CosOperator(Constants.getUnitDegrees()).run(0, -1), value);
-        });
-
-    });
-
+  });
 });

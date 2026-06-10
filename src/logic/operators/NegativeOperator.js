@@ -2,32 +2,31 @@ import BaseOperator from "./BaseOperator";
 import Constants from "../Constants";
 
 export default class NegativeOperator extends BaseOperator {
+  getOperator() {
+    return "-";
+  }
 
-    getOperator() {
-        return '-';
-    }
+  getPrecedence() {
+    return Constants.getPrecedenceHigh();
+  }
 
-    getPrecedence() {
-        return Constants.getPrecedenceHigh();
-    }
+  getStringOrder() {
+    return -1;
+  }
 
-    getStringOrder() {
-        return -1;
-    }
+  getStringNoSpacing() {
+    return true;
+  }
 
-    getStringNoSpacing() {
-        return true;
-    }
+  getApplyImmediately() {
+    return true;
+  }
 
-    getApplyImmediately() {
-        return true;
-    }
+  run(value1, value2) {
+    return (value1 || value2 || 0) * -1;
+  }
 
-    run(value1, value2) {
-        return (value1 || value2 || 0) * -1;
-    }
-
-    toFullString() {
-        return '-' + Constants.getNoSpaceMarker();
-    }
+  toFullString() {
+    return "-" + Constants.getNoSpaceMarker();
+  }
 }

@@ -1,46 +1,45 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import NegativeOperator from "./NegativeOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("NegativeOperator", () => {
+  it("gets operator", () => {
+    expect(new NegativeOperator().getOperator()).toEqual("-");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new NegativeOperator().getOperator(), "-");
-    });
+  it("gets precedence", () => {
+    expect(new NegativeOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceHigh(),
+    );
+  });
 
-    it('gets precedence', () => {
-        assert.equal(new NegativeOperator().getPrecedence(), Constants.getPrecedenceHigh());
-    });
+  it("gets string order", () => {
+    expect(new NegativeOperator().getStringOrder()).toEqual(-1);
+  });
 
-    it('gets string order', () => {
-        assert.equal(new NegativeOperator().getStringOrder(), -1);
-    });
+  it("gets string no spacing", () => {
+    expect(new NegativeOperator().getStringNoSpacing()).toBe(true);
+  });
 
-    it('gets string no spacing', () => {
-        assert.isTrue(new NegativeOperator().getStringNoSpacing());
-    });
+  it("gets apply immediately", () => {
+    expect(new NegativeOperator().getApplyImmediately()).toBe(true);
+  });
 
-    it('gets apply immediately', () => {
-        assert.isTrue(new NegativeOperator().getApplyImmediately());
-    });
+  it("runs", () => {
+    expect(new NegativeOperator().run(0)).toEqual(-0);
+    expect(new NegativeOperator().run(1)).toEqual(-1);
+    expect(new NegativeOperator().run(-1)).toEqual(1);
+    expect(new NegativeOperator().run(0, 5)).toEqual(-5);
+    expect(new NegativeOperator().run(1, 5)).toEqual(-1);
+    expect(new NegativeOperator().run(-1, 5)).toEqual(1);
+    expect(new NegativeOperator().run(0, 0)).toEqual(-0);
+    expect(new NegativeOperator().run(0, 1)).toEqual(-1);
+    expect(new NegativeOperator().run(0, -1)).toEqual(1);
+  });
 
-    it('runs', () => {
-        assert.equal(new NegativeOperator().run(0), 0);
-        assert.equal(new NegativeOperator().run(1), -1);
-        assert.equal(new NegativeOperator().run(-1), 1);
-        assert.equal(new NegativeOperator().run(0, 5), -5);
-        assert.equal(new NegativeOperator().run(1, 5), -1);
-        assert.equal(new NegativeOperator().run(-1, 5), 1);
-        assert.equal(new NegativeOperator().run(0, 0), 0);
-        assert.equal(new NegativeOperator().run(0, 1), -1);
-        assert.equal(new NegativeOperator().run(0, -1), 1);
-    });
-
-    it('gets full string', () => {
-        assert.equal(new NegativeOperator().toFullString(0), '-' + Constants.getNoSpaceMarker());
-    });
-
+  it("gets full string", () => {
+    expect(new NegativeOperator().toFullString(0)).toEqual(
+      "-" + Constants.getNoSpaceMarker(),
+    );
+  });
 });

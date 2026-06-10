@@ -1,50 +1,51 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import TanOperator from "./TanOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("TanOperator", () => {
+  it("gets operator", () => {
+    expect(new TanOperator().getOperator()).toEqual("tan");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new TanOperator().getOperator(), "tan");
+  it("gets precedence", () => {
+    expect(new TanOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceMedium(),
+    );
+  });
+
+  it("gets string order", () => {
+    expect(new TanOperator().getStringOrder()).toEqual(-1);
+  });
+
+  it("gets string brackets", () => {
+    expect(new TanOperator().getStringBrackets()).toBe(true);
+  });
+
+  it("gets apply immediately", () => {
+    expect(new TanOperator().getApplyImmediately()).toBe(true);
+  });
+
+  describe("runs", () => {
+    it("runs with radians unit", () => {
+      const value = Math.tan(1);
+      expect(new TanOperator().run(1)).toEqual(value);
+      expect(new TanOperator().run(0, 1)).toEqual(value);
+      expect(new TanOperator().run(-1)).toEqual(-value);
+      expect(new TanOperator().run(0, -1)).toEqual(-value);
     });
 
-    it('gets precedence', () => {
-        assert.equal(new TanOperator().getPrecedence(), Constants.getPrecedenceMedium());
+    it("runs with degrees unit", () => {
+      const value = Math.tan(Math.PI / 180);
+      expect(new TanOperator(Constants.getUnitDegrees()).run(1)).toEqual(value);
+      expect(new TanOperator(Constants.getUnitDegrees()).run(0, 1)).toEqual(
+        value,
+      );
+      expect(new TanOperator(Constants.getUnitDegrees()).run(-1)).toEqual(
+        -value,
+      );
+      expect(new TanOperator(Constants.getUnitDegrees()).run(0, -1)).toEqual(
+        -value,
+      );
     });
-
-    it('gets string order', () => {
-        assert.equal(new TanOperator().getStringOrder(), -1);
-    });
-
-    it('gets string brackets', () => {
-        assert.isTrue(new TanOperator().getStringBrackets());
-    });
-
-    it('gets apply immediately', () => {
-        assert.isTrue(new TanOperator().getApplyImmediately());
-    });
-
-    describe('runs', () => {
-
-        it('runs with radians unit', () => {
-            const value = Math.tan(1);
-            assert.equal(new TanOperator().run(1), value);
-            assert.equal(new TanOperator().run(0, 1), value);
-            assert.equal(new TanOperator().run(-1), -value);
-            assert.equal(new TanOperator().run(0, -1), -value);
-        });
-
-        it('runs with degrees unit', () => {
-            const value = Math.tan(Math.PI / 180);
-            assert.equal(new TanOperator(Constants.getUnitDegrees()).run(1), value);
-            assert.equal(new TanOperator(Constants.getUnitDegrees()).run(0, 1), value);
-            assert.equal(new TanOperator(Constants.getUnitDegrees()).run(-1), -value);
-            assert.equal(new TanOperator(Constants.getUnitDegrees()).run(0, -1), -value);
-        });
-
-    });
-
+  });
 });

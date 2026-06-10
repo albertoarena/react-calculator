@@ -1,33 +1,30 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import PiOperator from "./PiOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("PiOperator", () => {
+  it("gets operator", () => {
+    expect(new PiOperator().getOperator()).toEqual("π");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new PiOperator().getOperator(), "π");
-    });
+  it("gets apply immediately", () => {
+    expect(new PiOperator().getApplyImmediately()).toBe(true);
+  });
 
-    it('gets apply immediately', () => {
-        assert.isTrue(new PiOperator().getApplyImmediately());
-    });
+  it("is constant", () => {
+    expect(new PiOperator().isConstant()).toBe(true);
+  });
 
-    it('is constant', () => {
-        assert.isTrue(new PiOperator().isConstant());
-    });
+  it("gets precedence", () => {
+    expect(new PiOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceLow(),
+    );
+  });
 
-    it('gets precedence', () => {
-        assert.equal(new PiOperator().getPrecedence(), Constants.getPrecedenceLow());
-    });
-
-    it('runs', () => {
-        assert.equal(new PiOperator().run(0, 0), Math.PI);
-        assert.equal(new PiOperator().run(1, 2), Math.PI);
-        assert.equal(new PiOperator().run(1.23, 4.56), Math.PI);
-        assert.equal(new PiOperator().run("A", "B"), Math.PI);
-    });
-
+  it("runs", () => {
+    expect(new PiOperator().run(0, 0)).toEqual(Math.PI);
+    expect(new PiOperator().run(1, 2)).toEqual(Math.PI);
+    expect(new PiOperator().run(1.23, 4.56)).toEqual(Math.PI);
+    expect(new PiOperator().run("A", "B")).toEqual(Math.PI);
+  });
 });

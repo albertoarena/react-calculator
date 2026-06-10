@@ -1,41 +1,38 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import SquareRootOperator from "./SquareRootOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("SquareRootOperator", () => {
+  it("gets operator", () => {
+    expect(new SquareRootOperator().getOperator()).toEqual("√");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new SquareRootOperator().getOperator(), "√");
-    });
+  it("gets precedence", () => {
+    expect(new SquareRootOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceHigh(),
+    );
+  });
 
-    it('gets precedence', () => {
-        assert.equal(new SquareRootOperator().getPrecedence(), Constants.getPrecedenceHigh());
-    });
+  it("gets string brackets", () => {
+    expect(new SquareRootOperator().getStringBrackets()).toBe(true);
+  });
 
-    it('gets string brackets', () => {
-        assert.isTrue(new SquareRootOperator().getStringBrackets());
-    });
+  it("gets string order", () => {
+    expect(new SquareRootOperator().getStringOrder()).toEqual(-1);
+  });
 
-    it('gets string order', () => {
-        assert.equal(new SquareRootOperator().getStringOrder(), -1);
-    });
+  it("runs", () => {
+    const calc = (x) => {
+      return Math.sqrt(x);
+    };
 
-    it('runs', () => {
-        const calc = (x) => {
-            return Math.sqrt(x);
-        }
-
-        assert.equal(new SquareRootOperator().run(0), calc(0));
-        assert.equal(new SquareRootOperator().run(1), calc(1));
-        assert.equal(new SquareRootOperator().run(2), calc(2));
-        assert.equal(new SquareRootOperator().run(8), calc(8));
-        assert.equal(new SquareRootOperator().run(0, 0), calc(0));
-        assert.equal(new SquareRootOperator().run(0, 1), calc(1));
-        assert.equal(new SquareRootOperator().run(0, 2), calc(2));
-        assert.equal(new SquareRootOperator().run(0, 8), calc(8));
-    });
-
+    expect(new SquareRootOperator().run(0)).toEqual(calc(0));
+    expect(new SquareRootOperator().run(1)).toEqual(calc(1));
+    expect(new SquareRootOperator().run(2)).toEqual(calc(2));
+    expect(new SquareRootOperator().run(8)).toEqual(calc(8));
+    expect(new SquareRootOperator().run(0, 0)).toEqual(calc(0));
+    expect(new SquareRootOperator().run(0, 1)).toEqual(calc(1));
+    expect(new SquareRootOperator().run(0, 2)).toEqual(calc(2));
+    expect(new SquareRootOperator().run(0, 8)).toEqual(calc(8));
+  });
 });

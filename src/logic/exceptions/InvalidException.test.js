@@ -1,15 +1,10 @@
-import chai from "chai";
-import {describe, it, expect} from "@jest/globals";
+import { describe, it, expect } from "vitest";
 import InvalidException from "./InvalidException";
 
-const assert = chai.assert;
-
 describe("InvalidException", () => {
-
-    it('constructor', () => {
-        const obj = new InvalidException("message");
-        assert.instanceOf(obj, InvalidException);
-        assert.equal(obj.getMessage(), "Invalid");
-    });
-
+  it("constructor", () => {
+    const obj = new InvalidException("message");
+    expect(obj).toBeInstanceOf(InvalidException);
+    expect(obj.getMessage()).toEqual("Invalid");
+  });
 });
