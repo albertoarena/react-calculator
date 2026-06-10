@@ -6,7 +6,7 @@ Requires Node ≥ 20.19 / ≥ 22.12 (see `.nvmrc`).
 
 ## Try it
 
-[http://albertoarena.it/react-calculator](http://albertoarena.it/react-calculator)
+[https://albertoarena.it/react-calculator/](https://albertoarena.it/react-calculator/)
 
 ## Install it
 
@@ -36,26 +36,36 @@ It supports basic operators (+, -, /, \*, ^), trigonometric operators and preced
 
 ## Operators
 
-The Order of operators follows the standard (see [Wikipedia][operators]):
+Order of operations follows the standard (see [Wikipedia][operators]).
 
 High precedence
 
 - `^`: exponent (power)
-- `^2`: exponent 2
+- `^2`: square
 - `√`: square root (alias `sqrt`)
+- `eˣ`: exponential
+- `!`: factorial
+- `%`: percentage
+- `1/x`: reciprocal
+- `±`: unary negation
 
 Medium precedence
 
-- `\*`: multiplication
+- `×`: multiplication
 - `/`: division
-- `sin`: sine
-- `cos`: cosine
-- `tan`: tangent
+- `sin`, `cos`, `tan`: trigonometric (radians or degrees, toggleable)
+- `ln`: natural logarithm
+- `log`: base-10 logarithm
 
 Low precedence
 
 - `+`: addition
 - `-`: subtraction
+
+Constants
+
+- `π`: pi
+- `e`: Euler's number
 
 [vite]: https://vite.dev
 [vitest]: https://vitest.dev
