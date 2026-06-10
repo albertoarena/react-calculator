@@ -1,47 +1,40 @@
-React Calculator
-===
+# React Calculator
 
-React implementation of calculator created with [create-react-app][create-react-app],
-and based on [Andrew Farmer's calculator][ahfarmer-calculator]. It is inspired by [shunting-yard algorithm][shunting-yard-algorithm].
+React implementation of calculator built with [Vite][vite] and [Vitest][vitest], based on [Andrew Farmer's calculator][ahfarmer-calculator]. It is inspired by [shunting-yard algorithm][shunting-yard-algorithm].
 
-Try it
----
+Requires Node ≥ 20.19 / ≥ 22.12 (see `.nvmrc`).
+
+## Try it
 
 [http://albertoarena.it/react-calculator](http://albertoarena.it/react-calculator)
 
-
-Install it
----
+## Install it
 
 `yarn` or `npm install`
 
-Use it
----
+## Use it
 
-`yarn start` or `npm start`
+`yarn dev` or `npm run dev`
 
-Test it
----
+## Test it
 
-`yarn test` or `npm test`
+`yarn test` (single run) or `yarn test:watch`
 
-Build it
----
+## Build it
 
-`yarn build` or `npm run build`
+`yarn build` or `npm run build` (outputs to `dist/`)
 
+## Deploy it
 
-Options
----
+`yarn deploy` publishes `dist/` to GitHub Pages.
+
+## Options
 
 It has a basic and extended version.
 
 It supports basic operators (+, -, /, \*, ^), trigonometric operators and precedence.
 
-
-
-Operators
----
+## Operators
 
 The Order of operators follows the standard (see [Wikipedia][operators]):
 
@@ -64,8 +57,8 @@ Low precedence
 - `+`: addition
 - `-`: subtraction
 
-
-[create-react-app]:             https://github.com/facebook/create-react-app
-[ahfarmer-calculator]:          https://github.com/ahfarmer/calculator
-[shunting-yard-algorithm]:      http://en.wikipedia.org/wiki/Shunting-yard_algorithm
-[operators]:                    https://en.wikipedia.org/wiki/Order_of_operations#Definition
+[vite]: https://vite.dev
+[vitest]: https://vitest.dev
+[ahfarmer-calculator]: https://github.com/ahfarmer/calculator
+[shunting-yard-algorithm]: http://en.wikipedia.org/wiki/Shunting-yard_algorithm
+[operators]: https://en.wikipedia.org/wiki/Order_of_operations#Definition

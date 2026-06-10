@@ -1,56 +1,50 @@
-import chai from "chai";
-import {describe, it, expect} from "@jest/globals";
+import { describe, it, expect } from "vitest";
 import LogarithmOperator from "./LogarithmOperator";
 import Constants from "../Constants";
 import InvalidException from "../exceptions/InvalidException";
 
-const assert = chai.assert;
-
 describe("LogarithmOperator", () => {
+  it("gets operator", () => {
+    expect(new LogarithmOperator().getOperator()).toEqual("log");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new LogarithmOperator().getOperator(), "log");
+  it("gets precedence", () => {
+    expect(new LogarithmOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceMedium(),
+    );
+  });
+
+  it("gets string order", () => {
+    expect(new LogarithmOperator().getStringOrder()).toEqual(-1);
+  });
+
+  it("gets apply immediately", () => {
+    expect(new LogarithmOperator().getApplyImmediately()).toBe(true);
+  });
+
+  describe("runs", () => {
+    it("runs", () => {
+      const calc = (v) => {
+        return Math.log10(v);
+      };
+
+      expect(new LogarithmOperator().run(0)).toEqual(calc(0));
+      expect(new LogarithmOperator().run(1)).toEqual(calc(1));
+      expect(new LogarithmOperator().run(5)).toEqual(calc(5));
+
+      // Float
+      expect(new LogarithmOperator().run(1.2)).toEqual(calc(1.2));
+      expect(new LogarithmOperator().run(5.5)).toEqual(calc(5.5));
     });
 
-    it('gets precedence', () => {
-        assert.equal(new LogarithmOperator().getPrecedence(), Constants.getPrecedenceMedium());
+    it("runs and triggers exception", () => {
+      expect(() => {
+        new LogarithmOperator().run(-5);
+      }).toThrow(InvalidException);
+
+      expect(() => {
+        new LogarithmOperator().run("A");
+      }).toThrow(InvalidException);
     });
-
-    it('gets string order', () => {
-        assert.equal(new LogarithmOperator().getStringOrder(), -1);
-    });
-
-    it('gets apply immediately', () => {
-        assert.isTrue(new LogarithmOperator().getApplyImmediately());
-    });
-
-    describe("runs", () => {
-
-        it('runs', () => {
-            const calc = (v) => {
-                return Math.log10(v);
-            }
-
-            assert.equal(new LogarithmOperator().run(0), calc(0));
-            assert.equal(new LogarithmOperator().run(1), calc(1));
-            assert.equal(new LogarithmOperator().run(5), calc(5));
-
-            // Float
-            assert.equal(new LogarithmOperator().run(1.2), calc(1.2));
-            assert.equal(new LogarithmOperator().run(5.5), calc(5.5));
-        });
-
-        it('runs and triggers exception', () => {
-            expect(() => {
-                new LogarithmOperator().run(-5);
-            }).toThrow(InvalidException);
-
-            expect(() => {
-                new LogarithmOperator().run("A");
-            }).toThrow(InvalidException);
-
-        });
-
-    });
-
+  });
 });

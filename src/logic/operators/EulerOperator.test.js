@@ -1,33 +1,30 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import EulerOperator from "./EulerOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("EulerOperator", () => {
+  it("gets operator", () => {
+    expect(new EulerOperator().getOperator()).toEqual("e");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new EulerOperator().getOperator(), "e");
-    });
+  it("gets apply immediately", () => {
+    expect(new EulerOperator().getApplyImmediately()).toBe(true);
+  });
 
-    it('gets apply immediately', () => {
-        assert.isTrue(new EulerOperator().getApplyImmediately());
-    });
+  it("is constant", () => {
+    expect(new EulerOperator().isConstant()).toBe(true);
+  });
 
-    it('is constant', () => {
-        assert.isTrue(new EulerOperator().isConstant());
-    });
+  it("gets precedence", () => {
+    expect(new EulerOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceLow(),
+    );
+  });
 
-    it('gets precedence', () => {
-        assert.equal(new EulerOperator().getPrecedence(), Constants.getPrecedenceLow());
-    });
-
-    it('runs', () => {
-        assert.equal(new EulerOperator().run(0, 0), Math.E);
-        assert.equal(new EulerOperator().run(1, 2), Math.E);
-        assert.equal(new EulerOperator().run(1.23, 4.56), Math.E);
-        assert.equal(new EulerOperator().run("A", "B"), Math.E);
-    });
-
+  it("runs", () => {
+    expect(new EulerOperator().run(0, 0)).toEqual(Math.E);
+    expect(new EulerOperator().run(1, 2)).toEqual(Math.E);
+    expect(new EulerOperator().run(1.23, 4.56)).toEqual(Math.E);
+    expect(new EulerOperator().run("A", "B")).toEqual(Math.E);
+  });
 });

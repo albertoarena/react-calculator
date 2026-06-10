@@ -1,39 +1,38 @@
-import chai from "chai";
-import {describe, it} from "@jest/globals";
+import { describe, it } from "vitest";
 import PercentageOperator from "./PercentageOperator";
 import Constants from "../Constants";
 
-const assert = chai.assert;
-
 describe("PercentageOperator", () => {
+  it("gets operator", () => {
+    expect(new PercentageOperator().getOperator()).toEqual("%");
+  });
 
-    it('gets operator', () => {
-        assert.equal(new PercentageOperator().getOperator(), "%");
-    });
+  it("gets precedence", () => {
+    expect(new PercentageOperator().getPrecedence()).toEqual(
+      Constants.getPrecedenceHigh(),
+    );
+  });
 
-    it('gets precedence', () => {
-        assert.equal(new PercentageOperator().getPrecedence(), Constants.getPrecedenceHigh());
-    });
+  it("gets apply immediately", () => {
+    expect(new PercentageOperator().getApplyImmediately()).toBe(true);
+  });
 
-    it('gets apply immediately', () => {
-        assert.isTrue(new PercentageOperator().getApplyImmediately());
-    });
+  it("runs", () => {
+    expect(new PercentageOperator().run(0)).toEqual(0);
+    expect(new PercentageOperator().run(1)).toEqual(0.01);
+    expect(new PercentageOperator().run(-1)).toEqual(-0.01);
+    expect(new PercentageOperator().run(100)).toEqual(1.0);
+    expect(new PercentageOperator().run(10000)).toEqual(100.0);
+    expect(new PercentageOperator().run(0, 0)).toEqual(0);
+    expect(new PercentageOperator().run(0, 1)).toEqual(0.01);
+    expect(new PercentageOperator().run(0, -1)).toEqual(-0.01);
+    expect(new PercentageOperator().run(0, 100)).toEqual(1.0);
+    expect(new PercentageOperator().run(0, 10000)).toEqual(100.0);
+  });
 
-    it('runs', () => {
-        assert.equal(new PercentageOperator().run(0), 0);
-        assert.equal(new PercentageOperator().run(1), 0.01);
-        assert.equal(new PercentageOperator().run(-1), -0.01);
-        assert.equal(new PercentageOperator().run(100), 1.0);
-        assert.equal(new PercentageOperator().run(10000), 100.0);
-        assert.equal(new PercentageOperator().run(0, 0), 0);
-        assert.equal(new PercentageOperator().run(0, 1), 0.01);
-        assert.equal(new PercentageOperator().run(0, -1), -0.01);
-        assert.equal(new PercentageOperator().run(0, 100), 1.0);
-        assert.equal(new PercentageOperator().run(0, 10000), 100.0);
-    });
-
-    it('gets full string', () => {
-        assert.equal(new PercentageOperator().toFullString(), Constants.getNoSpaceMarker() + '%');
-    });
-
+  it("gets full string", () => {
+    expect(new PercentageOperator().toFullString()).toEqual(
+      Constants.getNoSpaceMarker() + "%",
+    );
+  });
 });
