@@ -6,7 +6,7 @@ Requires Node ≥ 20.19 / ≥ 22.12 (see `.nvmrc`).
 
 ## Try it
 
-[https://albertoarena.it/react-calculator/](https://albertoarena.it/react-calculator/)
+[https://simplicity.albertoarena.it/react-calculator/](https://simplicity.albertoarena.it/react-calculator/)
 
 ## Install it
 

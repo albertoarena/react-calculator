@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Vite + Vitest project. Use `yarn` (preferred — there's a `yarn.lock`) or `npm`. Node ≥ 20.19 / ≥ 22.12 (see `.nvmrc`: 22).
 
 - Install: `yarn`
-- Dev server: `yarn dev` (served at `http://localhost:5173/react-calculator/` — base path matches the GitHub Pages URL)
+- Dev server: `yarn dev` (served at `http://localhost:5173/react-calculator/` — base path matches the production URL, `https://simplicity.albertoarena.it/react-calculator/`)
 - Build: `yarn build` (outputs to `dist/`)
 - Preview production build: `yarn preview`
 - Test (single run): `yarn test`

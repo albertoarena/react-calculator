@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Alberto Arena <arena.alberto@gmail.com>",
   "license": "MIT",
-  "homepage": "http://albertoarena.it/react-calculator/",
+  "homepage": "https://simplicity.albertoarena.it/react-calculator/",
   "engines": {
     "node": ">=20.19 || >=22.12"
   },
